@@ -1,4 +1,5 @@
 import React, { useState, useContext, createContext } from "react";
+import { motion } from "framer-motion";
 import {
   Container,
   Title,
@@ -9,6 +10,11 @@ import {
   Item,
   Frame,
 } from "./style/Accordion";
+
+const variants = {
+  open: { opacity: 1, height: "auto" },
+  close: { opacity: 0, height: 0 },
+};
 
 const ToggleContext = createContext();
 
@@ -68,5 +74,17 @@ Accordion.Header = function AccordionHeader({ children, ...restProps }) {
 
 Accordion.Body = function AccordionBody({ children, ...restProps }) {
   const { toggleShow } = useContext(ToggleContext);
-  return toggleShow ? <Body {...restProps}>{children}</Body> : null;
+  return (
+    toggleShow && (
+      <motion.div
+        style={{ overflow: "hidden" }}
+        variants={variants}
+        initial="close"
+        animate="open"
+        exit="close"
+      >
+        <Body {...restProps}>{children}</Body>
+      </motion.div>
+    )
+  );
 };

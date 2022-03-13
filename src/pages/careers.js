@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Context } from "../context/Context";
 import Header from "../components/Header";
 import Main from "../components/Main";
@@ -12,12 +12,36 @@ import Jobs from "../components/Jobs";
 import { Helmet } from "react-helmet";
 import { featuresDb } from "../db/featuresDB";
 import { jobsDb } from "../db/jobsDB";
+import { motion } from "framer-motion";
+
+const animationOne = {
+  in: {
+    y: 0,
+    opacity: 1,
+  },
+
+  out: {
+    y: -10,
+    opacity: 0,
+  },
+};
 
 const Careers = () => {
   const { isSidebarOpen, setIsSidebarOpen } = useContext(Context);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
-    <>
+    <motion.div
+      initial="out"
+      animate="in"
+      exit="out"
+      variants={animationOne}
+      transition={{ duration: 0.75 }}
+    >
       <Helmet>
         <title>Scoot multi page website | Careers Page</title>
         <meta
@@ -149,7 +173,7 @@ const Careers = () => {
           </Footer.Icons>
         </Footer.Wrapper>
       </Footer>
-    </>
+    </motion.div>
   );
 };
 

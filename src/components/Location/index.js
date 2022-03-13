@@ -9,6 +9,8 @@ import {
   Item,
 } from "./style/Location";
 
+import { motion } from "framer-motion";
+
 export default function Location({ children, ...restProps }) {
   return <Container {...restProps}>{children}</Container>;
 }
@@ -26,7 +28,15 @@ Location.Text = function LocationText({ children, ...restProps }) {
   return <Text {...restProps}>{children}</Text>;
 };
 Location.Button = function LocationButton({ children, ...restProps }) {
-  return <Button {...restProps}>{children}</Button>;
+  return (
+    <motion.div
+      whileHover={{
+        scale: 1.1,
+      }}
+    >
+      <Button {...restProps}>{children}</Button>
+    </motion.div>
+  );
 };
 
 Location.City = function LocationCity({ children, ...restProps }) {

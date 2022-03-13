@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Context } from "../context/Context";
 import Header from "../components/Header";
 import Main from "../components/Main";
@@ -8,12 +8,35 @@ import Footer from "../components/Footer";
 import SignUp from "../components/SignUp";
 import Location from "../components/Location";
 import { Helmet } from "react-helmet";
+import { motion } from "framer-motion";
+
+const animationOne = {
+  in: {
+    y: 0,
+    opacity: 1,
+  },
+
+  out: {
+    y: -10,
+    opacity: 0,
+  },
+};
 
 const Locations = () => {
   const { isSidebarOpen, setIsSidebarOpen } = useContext(Context);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
-    <>
+    <motion.div
+      initial="out"
+      animate="in"
+      exit="out"
+      variants={animationOne}
+      transition={{ duration: 0.75 }}
+    >
       <Helmet>
         <title>Scoot multi page website | Locations Page</title>
         <meta
@@ -126,7 +149,7 @@ const Locations = () => {
           </Footer.Icons>
         </Footer.Wrapper>
       </Footer>
-    </>
+    </motion.div>
   );
 };
 

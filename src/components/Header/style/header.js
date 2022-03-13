@@ -53,8 +53,8 @@ export const Logo = styled.img`
 `;
 
 export const Button = styled.button`
-  margin-left: auto;
-  border: 1px solid #fff;
+  border: 1px solid #fcb72b;
+
   outline: none;
   padding: 14px 40px;
   font-size: 15px;

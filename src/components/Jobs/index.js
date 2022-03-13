@@ -8,6 +8,8 @@ import {
   Button,
 } from "./style/Jobs";
 
+import { motion } from "framer-motion";
+
 export default function Jobs({ children, ...restProps }) {
   return <Container {...restProps}>{children}</Container>;
 }
@@ -28,5 +30,13 @@ Jobs.City = function JobCity({ children, ...restProps }) {
   return <City {...restProps}>{children}</City>;
 };
 Jobs.Button = function JobButton({ children, ...restProps }) {
-  return <Button {...restProps}>{children}</Button>;
+  return (
+    <motion.div
+      whileHover={{
+        scale: 1.1,
+      }}
+    >
+      <Button {...restProps}>{children}</Button>
+    </motion.div>
+  );
 };

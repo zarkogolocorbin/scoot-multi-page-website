@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Context } from "../context/Context";
 import Header from "../components/Header";
 import Sidebar from "../components/Sidebar";
@@ -10,11 +10,33 @@ import { Helmet } from "react-helmet";
 import { Article, Section } from "../components/Section";
 import { homeDb } from "../db/homeDB";
 import { descriptionDb } from "../db/descriptionDB";
+import { motion } from "framer-motion";
+
+const animationOne = {
+  in: {
+    y: 0,
+    opacity: 1,
+  },
+
+  out: {
+    y: -10,
+    opacity: 0,
+  },
+};
 
 const Home = () => {
   const { isSidebarOpen, setIsSidebarOpen } = useContext(Context);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
-    <>
+    <motion.div
+      initial="out"
+      animate="in"
+      exit="out"
+      variants={animationOne}
+      transition={{ duration: 0.75 }}
+    >
       <Helmet>
         <title>Scoot multi page website</title>
         <meta name="description" content="Easy scooter rental in the city" />
@@ -132,7 +154,7 @@ const Home = () => {
           </Footer.Icons>
         </Footer.Wrapper>
       </Footer>
-    </>
+    </motion.div>
   );
 };
 

@@ -14,6 +14,8 @@ import {
   CareersLocationsHero,
 } from "./style/header";
 
+import { motion } from "framer-motion";
+
 export default function Header({ children }) {
   return <Container>{children}</Container>;
 }
@@ -25,14 +27,31 @@ Header.Links = function HeaderLinks({ children }) {
   return <Links>{children}</Links>;
 };
 Header.Link = function HeaderLink({ children, ...restProps }) {
-  return <NavLink {...restProps}>{children}</NavLink>;
+  return (
+    <motion.div
+      whileHover={{
+        scale: 1.1,
+      }}
+    >
+      <NavLink {...restProps}>{children}</NavLink>
+    </motion.div>
+  );
 };
 
 Header.Logo = function HeaderLogo({ children, ...restProps }) {
   return <Logo {...restProps}>{children}</Logo>;
 };
 Header.Button = function HeaderButton({ children }) {
-  return <Button>{children}</Button>;
+  return (
+    <motion.div
+      style={{ marginLeft: "auto" }}
+      whileHover={{
+        scale: 1.1,
+      }}
+    >
+      <Button>{children}</Button>
+    </motion.div>
+  );
 };
 
 Header.HamburgerMenu = function HeaderHamburgerMenu({ ...restProps }) {
@@ -49,7 +68,15 @@ Header.HeroText = function HeaderHeroText({ children, ...restProps }) {
   return <HeroText {...restProps}>{children}</HeroText>;
 };
 Header.HeroButton = function HeaderHeroButton({ children, ...restProps }) {
-  return <HeroButton {...restProps}>{children}</HeroButton>;
+  return (
+    <motion.div
+      whileHover={{
+        scale: 1.1,
+      }}
+    >
+      <HeroButton>{children}</HeroButton>
+    </motion.div>
+  );
 };
 
 Header.AboutHero = function HeaderAboutHero({ children, ...restProps }) {

@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 import {
   SectionContainer,
   ArticleContainer,
@@ -26,7 +27,15 @@ Article.Text = function HomeText({ children, ...resProps }) {
   return <Text {...resProps}>{children}</Text>;
 };
 Article.Button = function HomeButton({ children, ...resProps }) {
-  return <Button {...resProps}>{children}</Button>;
+  return (
+    <motion.div
+      whileHover={{
+        scale: 1.1,
+      }}
+    >
+      <Button {...resProps}>{children}</Button>
+    </motion.div>
+  );
 };
 Article.Image = function HomeImage({ children, ...resProps }) {
   return <Image {...resProps}>{children}</Image>;

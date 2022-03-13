@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import {
   Container,
   Links,
@@ -25,7 +26,15 @@ Footer.Links = function FooterLinks({ children, ...restProps }) {
 };
 
 Footer.Link = function Link({ children, ...restProps }) {
-  return <FooterLink {...restProps}>{children}</FooterLink>;
+  return (
+    <motion.div
+      whileHover={{
+        scale: 1.1,
+      }}
+    >
+      <FooterLink {...restProps}>{children}</FooterLink>
+    </motion.div>
+  );
 };
 
 Footer.Icons = function FooterIcons({ children, ...restProps }) {
@@ -33,5 +42,13 @@ Footer.Icons = function FooterIcons({ children, ...restProps }) {
 };
 
 Footer.Icon = function FooterIcon({ children, ...restProps }) {
-  return <Icon {...restProps} />;
+  return (
+    <motion.div
+      whileHover={{
+        scale: 1.1,
+      }}
+    >
+      <Icon {...restProps} />
+    </motion.div>
+  );
 };
