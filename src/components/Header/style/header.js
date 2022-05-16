@@ -5,16 +5,24 @@ export const Container = styled.div`
   max-width: 1440px;
   margin: 0 auto;
   overflow-x: hidden;
+  z-index: ${({ close }) => (close ? "1000" : "")};
 `;
 
 export const Nav = styled.nav`
   padding: 22px calc(10vw + 15px);
-
   display: flex;
   align-items: center;
+  justify-content: space-between;
 
+  @media screen and (max-width: 528px) {
+    position: ${({ close }) => (close ? "fixed" : "relative")};
+    top: 0;
+    background-color: #fff;
+    width: 100%;
+    z-index: 4;
+  }
   @media screen and (max-width: 768px) {
-    padding: 22px calc(10vw - 5.5px);
+    padding: 21px calc(10vw - 5.5px);
   }
 `;
 
@@ -44,9 +52,14 @@ export const Logo = styled.img`
   width: 108px;
   height: 28px;
   cursor: pointer;
+
+  @media screen and (max-width: 528px) {
+    margin-left: 35%;
+  }
+
   @media screen and (max-width: 768px) {
     display: block;
-    margin: 0 auto;
+    /* margin: 0 auto; */
     width: 75px;
     height: 20px;
   }

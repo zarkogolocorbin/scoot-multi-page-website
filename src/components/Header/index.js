@@ -16,12 +16,12 @@ import {
 
 import { motion } from "framer-motion";
 
-export default function Header({ children }) {
-  return <Container>{children}</Container>;
+export default function Header({ children, ...restProps }) {
+  return <Container {...restProps}>{children}</Container>;
 }
 
-Header.Nav = function HeaderNav({ children }) {
-  return <Nav>{children}</Nav>;
+Header.Nav = function HeaderNav({ children, ...restProps }) {
+  return <Nav {...restProps}>{children}</Nav>;
 };
 Header.Links = function HeaderLinks({ children }) {
   return <Links>{children}</Links>;

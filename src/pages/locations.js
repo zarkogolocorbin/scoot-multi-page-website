@@ -45,7 +45,7 @@ const Locations = () => {
         />
       </Helmet>
       <Header>
-        <Header.Nav>
+        <Header.Nav close={isSidebarOpen}>
           <Header.HamburgerMenu
             onClick={() => setIsSidebarOpen(!isSidebarOpen)}
             src={
@@ -72,9 +72,18 @@ const Locations = () => {
         </Header.CareersLocationsHero>
         <Sidebar close={isSidebarOpen}>
           <Sidebar.Links close={isSidebarOpen}>
-            <Sidebar.Link to="/about">About</Sidebar.Link>
-            <Sidebar.Link to="/locations">Locations</Sidebar.Link>
-            <Sidebar.Link to="/careers">Careers</Sidebar.Link>
+            <Sidebar.Link to="/about" onClick={() => setIsSidebarOpen(false)}>
+              About
+            </Sidebar.Link>
+            <Sidebar.Link
+              to="/locations"
+              onClick={() => setIsSidebarOpen(false)}
+            >
+              Locations
+            </Sidebar.Link>
+            <Sidebar.Link to="/careers" onClick={() => setIsSidebarOpen(false)}>
+              Careers
+            </Sidebar.Link>
             <Sidebar.Button>Get Scootin</Sidebar.Button>
           </Sidebar.Links>
         </Sidebar>

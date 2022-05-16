@@ -2,11 +2,11 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 export const Container = styled.div`
-  position: absolute;
+  position: fixed;
   left: 0;
-  top: 69px;
+  top: 62px;
   width: 100vw;
-  height: 100vh;
+  height: calc(100vh - 62px);
   background-color: rgba(0, 0, 0, 0.2);
   opacity: ${({ close }) => (close ? "1; z-index: 4;" : "0; z-index: -1;")};
 `;
@@ -26,7 +26,7 @@ export const NavLink = styled(Link)`
 `;
 export const Links = styled.div`
   width: 25.6rem;
-  height: calc(100vh - 64px);
+  height: calc(100vh - 62px);
   background-color: #333a44;
   display: flex;
   flex-direction: column;
@@ -36,7 +36,7 @@ export const Links = styled.div`
 `;
 export const Button = styled.button`
   margin-top: auto;
-  margin-bottom: 2.4rem;
+  margin-bottom: 3rem;
   font-family: "Space Mono", monospace;
   font-size: 1.5rem;
   line-height: 25px;
