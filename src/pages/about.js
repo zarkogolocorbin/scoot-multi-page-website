@@ -93,9 +93,9 @@ const About = () => {
       </Header>
       <Main>
         <Section>
-          {aboutDb.map((about) => {
+          {aboutDb.map((about, index) => {
             return (
-              <Article revers={about.revers}>
+              <Article revers={about.revers} key={index}>
                 <Article.Content>
                   <Article.Title>{about.title}</Article.Title>
                   <Article.Text>{about.text}</Article.Text>
@@ -112,9 +112,9 @@ const About = () => {
         <Features>
           <Features.Title>Our values</Features.Title>
           <Features.Cards>
-            {featuresDb.map((item) => {
+            {featuresDb.map((item, index) => {
               return (
-                <Features.Card>
+                <Features.Card key={index}>
                   <Features.Image src={`/assets/images/${item.img}`} />
                   <Features.Number>{`0${item.id}`}</Features.Number>
                   <Features.CardTitle>{item.title}</Features.CardTitle>

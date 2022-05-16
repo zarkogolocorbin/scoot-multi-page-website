@@ -94,9 +94,9 @@ const Home = () => {
       <Main>
         <Description>
           <Description.Cards>
-            {descriptionDb.map((desc) => {
+            {descriptionDb.map((desc, index) => {
               return (
-                <Description.Card>
+                <Description.Card key={index}>
                   <Description.Image
                     src={`/assets/icons/${desc.imgURL}`}
                     alt={desc.title}
@@ -111,9 +111,9 @@ const Home = () => {
           </Description.Cards>
         </Description>
         <Section>
-          {homeDb.map((home) => {
+          {homeDb.map((home, index) => {
             return (
-              <Article revers={home.revers}>
+              <Article revers={home.revers} key={index}>
                 <Article.Content>
                   <Article.Title>{home.title}</Article.Title>
                   <Article.Text>{home.text}</Article.Text>
